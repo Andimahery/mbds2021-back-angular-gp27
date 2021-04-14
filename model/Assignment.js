@@ -1,5 +1,4 @@
 let mongoose = require('mongoose');
-let Matiere = require('../model/matiere');
 
 var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
 
@@ -9,7 +8,7 @@ let AssignmentSchema = Schema({
     id: Number,
     matiere: {
         id: Number,
-        matiere: String,
+        nom: String,
         pathImage: String,
         prof: {
             nomProfesseur: String,
