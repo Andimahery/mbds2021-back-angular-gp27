@@ -3,19 +3,10 @@ let Schema = mongoose.Schema;
 
 let MatiereSchema = Schema({
     id: Number,
-    nom: String,
-    img: {
-        data: Buffer,
-        contentType: String
-    },
-    prof: {
-        id: Number,
-        nom: String,
-        img: {
-            data: Buffer,
-            contentType: String
-        }
-    }
+    nomProf:String,
+    pathProf:String,
+    matiere: String,
+    pathImage: String
 });
 
 // C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD
