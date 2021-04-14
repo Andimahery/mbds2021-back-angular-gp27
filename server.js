@@ -1,8 +1,11 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-
 let assignment = require('./routes/assignments');
+let user = require('./routes/users');
+let matiere = require('./routes/matieres');
+
+
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -10,9 +13,7 @@ mongoose.Promise = global.Promise;
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
 //const uri = 'mongodb+srv://mb:P7zM3VePm0caWA1L@cluster0.zqtee.mongodb.net/assignments?retryWrites=true&w=majority';
-// const uri = 'mongodb+srv://mb:toto@cluster0.xtr0u.mongodb.net/assignments?retryWrites=true&w=majority';
-const uri = 'mongodb+srv://admin:admin1234@cluster0.ts3nl.mongodb.net/assignments?retryWrites=true&w=majority';
-
+const uri = 'mongodb+srv://mahery:mahery@rakitsary.u61rm.mongodb.net/assignments?retryWrites=true&w=majority';
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -47,14 +48,40 @@ let port = process.env.PORT || 8010;
 const prefix = '/api';
 
 app.route(prefix + '/assignments')
-  .get(assignment.getAssignments)
-  .post(assignment.postAssignment)
-  .put(assignment.updateAssignment);
-
+  .get(assignment.getAssignments);
 
 app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
   .delete(assignment.deleteAssignment);
+
+
+app.route(prefix + '/assignments')
+  .post(assignment.postAssignment)
+  .put(assignment.updateAssignment);
+
+app.route(prefix + '/login')
+  .post(user.login);
+
+app.route(prefix + '/register')
+  .post(user.register);
+
+app.route(prefix + '/users')
+  .get(user.getUsers);
+
+app.route(prefix + '/matieres')
+  .get(matiere.getMatieres);
+
+app.route(prefix + '/matieres.:id')
+  .get(matiere.getMatiere);
+
+
+
+
+////////login////////
+
+
+
+
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
