@@ -1,29 +1,23 @@
 let mongoose = require('mongoose');
+let Matiere = require('../model/matiere');
+
+var aggregatePaginate = require("mongoose-aggregate-paginate-v2");
+
 let Schema = mongoose.Schema;
 
 let AssignmentSchema = Schema({
     id: Number,
-    matiere: {
-        id: Number,
-        matiere: String,
-        pathImage: String,
-        prof: {
-            nomProfesseur: String,
-            pathProfesseur: String
-        }
-    },
+    matiere : Matiere,
     dateDeRendu: Date,
     nom: String,
     rendu: Boolean,
-<<<<<<< HEAD
     note:Number,
-    remarque:String
-=======
-    note: Number,
-    remarque: String,
-    auteur: String
->>>>>>> 7738182172e41ce862e35bfee874930d86b3f6f5
+    remarque:String,
+    auteur:String
 });
+
+
+AssignmentSchema.plugin(aggregatePaginate);
 
 // C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD
 module.exports = mongoose.model('Assignment', AssignmentSchema);
