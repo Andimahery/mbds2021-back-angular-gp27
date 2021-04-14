@@ -7,13 +7,21 @@ let Schema = mongoose.Schema;
 
 let AssignmentSchema = Schema({
     id: Number,
-    matiere : Matiere,
+    matiere: {
+        id: Number,
+        matiere: String,
+        pathImage: String,
+        prof: {
+            nomProfesseur: String,
+            pathProfesseur: String
+        }
+    },
     dateDeRendu: Date,
     nom: String,
     rendu: Boolean,
-    note:Number,
-    remarque:String,
-    auteur:String
+    note: Number,
+    remarque: String,
+    auteur: String
 });
 
 
