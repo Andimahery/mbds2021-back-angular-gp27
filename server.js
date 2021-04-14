@@ -3,7 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
 let user = require('./routes/users');
-let matiere = require('./routes/matieres');
+let matiere=require('./routes/matieres');
 
 
 
@@ -68,11 +68,8 @@ app.route(prefix + '/register')
 app.route(prefix + '/users')
   .get(user.getUsers);
 
-app.route(prefix + '/matieres')
+  app.route(prefix + '/matieres')
   .get(matiere.getMatieres);
-
-app.route(prefix + '/matieres.:id')
-  .get(matiere.getMatiere);
 
 
 
